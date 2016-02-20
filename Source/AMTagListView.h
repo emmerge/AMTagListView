@@ -156,6 +156,12 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 @property (nonatomic, assign) float marginY;
 
+/** accessoryView
+ *
+ * A view that can be displayed before any of the tokens
+ */
+@property (nonatomic, strong) UIView *accessoryView;
+
 /** Tags list
  *
  * An array holding the current tag view objects

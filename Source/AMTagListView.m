@@ -40,6 +40,7 @@
     // Default margins
     _marginX = 4;
     _marginY = 4;
+    _accessoryView = nil;
     _tagAlignment = AMTagAlignmentLeft;
     self.clipsToBounds = YES;
     _tags = [@[] mutableCopy];
@@ -160,6 +161,15 @@
     __block float maxY = 0;
     __block float maxX = 0;
     __block CGSize size = CGSizeZero;
+    
+    if (self.accessoryView) {
+        CGRect frame = self.accessoryView.frame;
+        frame.origin = CGPointMake(0, 0);
+        self.accessoryView.frame = frame;
+        [self addSubview:self.accessoryView];
+        maxX = self.accessoryView.frame.size.width;
+    }
+
     for (AMTagView *obj in self.tags) {
         size = obj.frame.size;
         [self.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
